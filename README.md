@@ -9,6 +9,7 @@ destruction gas efficient: IERC721Enumerable implemente via link-list, the destr
 
 nft frontend with ERC721Enumerable standard interface
 [nft-frontend](https://github.com/i6o6i/nft-frontend)
+
 [DEMO](https://nft.kuanzw.com/)
 
 ## Documentation
