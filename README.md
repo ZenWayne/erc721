@@ -8,8 +8,23 @@ IERC721Enumerable implemente via link-list
 
 ## Usage
 
-abi file is generated on out directory
+Compile and Deploy to TestNet
+```shell
+forge script script/NFT.s.sol --rpc-url <your_rpc_url> --broadcast --verify -vvvv
+```
+
+abi file is generated on out/NFT.sol/NFT.json directory
 use the abi file to interact with the contract
+
+e.g use web3js to interact with contract
+``` javascript
+import {Web3} from 'web3';
+const NFTABI = require("NFT.json")["abi"];
+//your contract address
+const contract_addr = '0x1234'
+const web3 = new Web3(window.ethereum);
+const contract = new web3.eth.Contract(NFTABI, contract_addr);
+```
 
 ### Build
 
