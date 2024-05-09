@@ -1,19 +1,15 @@
-## Foundry
+## ERC721
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+An ERC721 library
 
-Foundry consists of:
-
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+IERC721Enumerable implemente via link-list
 
 ## Documentation
 
-https://book.getfoundry.sh/
-
 ## Usage
+
+abi file is generated on out directory
+use the abi file to interact with the contract
 
 ### Build
 
@@ -27,40 +23,28 @@ $ forge build
 $ forge test
 ```
 
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
 ### Deploy
 
+#### Deploy to localnet
 ```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+$ forge script src/NFT.sol:NFT --rpc-url <your_rpc_url> --private-key <your_private_key>
 ```
 
-### Cast
+#### Deploy to testnet
 
+1. deploy
 ```shell
-$ cast <subcommand>
+forge create --constructor-args "My First NFT" "MFNFT" --rpc-url https://eth-sepolia.g.alchemy.com/v2/<your_project_api_key> --private-key <your_private_key> src/NFT.sol:NFT
 ```
 
-### Help
-
+2. verify
 ```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+forge verify-contract 
+    --chain-id 11155111  
+    --watch 
+    --constructor-args $(cast abi-encode "constructor(string, string)" "My First NFT" "MFNFT")
+    --etherscan-api-key <your_ether_scan_api_key>
+    --compiler-version <compiler_version>
+    <contract_address>
+    src/NFT.sol:NFT
 ```
