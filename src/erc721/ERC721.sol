@@ -109,8 +109,10 @@ abstract contract ERC721 is ERC165, IERC721, ERC721Metadata{
     function _transferfrom(address _from, address _to, uint256 _tokenId, bytes memory data) internal virtual
     {
         _tokenOwner[_tokenId] = _to;
-        _balance[_to] +=1;
-        _balance[_from] -=1;
+        if(_to != address(0))
+            _balance[_to] +=1;
+        if(_from != address(0))
+            _balance[_from] -=1;
         emit Transfer(address(_from), _to, _tokenId);
         checkAndOnRecieve(_from, _to, _tokenId, data);
     }
