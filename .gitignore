@@ -1,9 +1,12 @@
 # Compiler files
 cache/
 out/**/
+out/**
 !out/
 !out/NFT.sol/
 !out/NFT.sol/NFT.json
+!out/NFT.sol/NFT.bin
+!out/NFT.sol/NFT.abi
 
 
 #except file out/NFT.sol/NFT.json
