@@ -28,7 +28,7 @@ use the abi file to interact with the contract
 e.g use web3js to interact with contract
 ``` javascript
 import {Web3} from 'web3';
-const NFTABI = require("NFT.json")["abi"];
+const NFTABI = require("NFT.abi");
 //your contract address
 const contract_addr = '0x1234'
 const web3 = new Web3(window.ethereum);
